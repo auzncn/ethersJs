@@ -7,15 +7,16 @@ for (let i = 0; i < address.length; i++) {
     addressMap.set(k,v)
 }
 
-// 1. 创建provider和wallet，监听事件时候推荐用wss连接而不是http
 console.log("\n1. 连接 wss RPC")
-// 准备 alchemy API 可以参考https://github.com/AmazingAng/WTFSolidity/blob/main/Topics/Tools/TOOL04_Alchemy/readme.md 
-// const ALCHEMY_MAINNET_WSSURL = 'wss://eth-mainnet.g.alchemy.com/v2/oKmOQKbneVkxgHZfibs-iFhIlIAl6HDN';
-// const ALCHEMY_MAINNET_WSSURL = 'wss://eth-goerli.g.alchemy.com/v2/7KP9XQB5Fpr-NhcLKkYTQHuEVuA3yc8d';
-const ALCHEMY_MAINNET_WSSURL = 'wss://goerli.infura.io/ws/v3/2b266dcedcea4e04b9dafe37bb254313';
+// const ALCHEMY_MAINNET_WSSURL = 'wss://eth-mainnet.g.alchemy.com/v2/oKmOQKbneVkxgHZfibs-iFhIlIAl6HDN';//主网被墙
+// const ALCHEMY_MAINNET_WSSURL = 'wss://eth-goerli.g.alchemy.com/v2/7KP9XQB5Fpr-NhcLKkYTQHuEVuA3yc8d';//测试网被墙
+
+const ALCHEMY_MAINNET_WSSURL = 'wss://3edae82df6f04c3d8dbfde9478ac09e1.eth.ws.rivet.cloud';
+// const ALCHEMY_MAINNET_WSSURL = 'wss://goerli.infura.io/ws/v3/2b266dcedcea4e04b9dafe37bb254313';//测试网
 const provider = new ethers.providers.WebSocketProvider(ALCHEMY_MAINNET_WSSURL);
 let network = provider.getNetwork()
 network.then(res => console.log(`[${(new Date).toLocaleTimeString()}] 连接到 chain ID ${res.chainId}`));
+console.log(`[${(new Date).toLocaleTimeString()}]`)
 
 const TRANSFER_KECCAK = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
 const WITHDRAWAL_KECCAK = '0x7fcf532c15f0a6db0bd6d0e038bea71d30d808c7d98cb3bf7268a95bf5081b65';
